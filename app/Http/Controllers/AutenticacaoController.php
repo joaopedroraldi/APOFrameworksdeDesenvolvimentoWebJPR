@@ -36,8 +36,7 @@ class AutenticacaoController extends Controller
         $request->session()->regenerate();
 
         // Manda para a página que a pessoa queria abrir (ou para o início).
-        return redirect()->intended('/')
-            ->with('sucesso', 'Bem-vindo(a), '.Auth::user()->name.'!');
+        return redirect()->intended('/');
     }
 
     // Mostra a tela de cadastro de usuário.

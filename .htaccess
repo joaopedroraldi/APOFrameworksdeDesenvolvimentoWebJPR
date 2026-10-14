@@ -1,0 +1,32 @@
+# Configuração do Apache para o Laravel rodar dentro desta subpasta.
+
+# Não deixa ninguém ver a lista de arquivos das pastas.
+<IfModule mod_negotiation.c>
+    Options -MultiViews -Indexes
+</IfModule>
+
+# Bloqueia arquivos que começam com ponto, como o .env (que guarda a senha do banco).
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Repassa o cabeçalho de login (Authorization) para o PHP.
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Bloqueia qualquer caminho com pasta ou arquivo que começa com ponto (.env, .git).
+    RewriteRule (^|/)\. - [F,L]
+
+    # Arquivos da pasta public (css, js, imagens) são entregues direto.
+    RewriteRule ^public/ - [L]
+
+    # O index.php da raiz é o destino final, então para aqui.
+    RewriteRule ^index\.php$ - [L]
+
+    # Todo o resto vai para o Laravel, que decide o que mostrar.
+    # Assim ninguém consegue abrir arquivos internos como o composer.json ou os logs.
+    RewriteRule ^ index.php [L]
+</IfModule>

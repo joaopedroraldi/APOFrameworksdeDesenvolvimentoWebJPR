@@ -49,6 +49,9 @@
     <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.8/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/datatables.net-bs@1.13.8/js/dataTables.bootstrap.min.js"></script>
 
+    {{-- jQuery Mask: coloca pontos e traços sozinho no CPF, telefone e CEP. --}}
+    <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js"></script>
+
     {{-- SweetAlert2: as janelinhas bonitas de aviso. --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
 

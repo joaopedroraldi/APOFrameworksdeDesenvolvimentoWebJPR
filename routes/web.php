@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutenticacaoController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\InstalacaoController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('inicio');
     })->name('inicio');
+
+    // CRUD de clientes. Esta linha cria as 7 rotas de uma vez:
+    // listar, criar (tela e salvar), ver, editar (tela e salvar) e excluir.
+    Route::resource('clientes', ClienteController::class);
 
     // Sair do sistema. É POST para ninguém deslogar a pessoa só com um link.
     Route::post('/sair', [AutenticacaoController::class, 'sair'])->name('sair');

@@ -2,24 +2,24 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Cliente;
+use App\Models\Livro;
 use Illuminate\Database\Seeder;
 
+// Seeder principal. É ele que roda quando chamamos o "db:seed".
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Só cadastra os livros de exemplo se a tabela estiver vazia.
+        // Assim, rodar de novo não cria livros repetidos.
+        if (Livro::count() === 0) {
+            $this->call(LivroSeeder::class);
+        }
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Mesma coisa para os clientes.
+        if (Cliente::count() === 0) {
+            $this->call(ClienteSeeder::class);
+        }
     }
 }

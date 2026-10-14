@@ -11,6 +11,7 @@ use Throwable;
 class InstalacaoController extends Controller
 {
     // Abre quando acessamos /instalar?token=SENHA
+    // Para cadastrar os dados de exemplo junto: /instalar?token=SENHA&exemplos=1
     public function migrar(Request $request)
     {
         // Pega a senha da instalação que está no .env.
@@ -29,6 +30,13 @@ class InstalacaoController extends Controller
             // O --force é obrigatório porque o sistema está no servidor de verdade.
             Artisan::call('migrate', ['--force' => true]);
             $resultado = Artisan::output();
+
+            // Se a URL tiver "&exemplos=1", cadastra também os livros e clientes de exemplo.
+            // Os seeders só cadastram se a tabela estiver vazia, então não repete dados.
+            if ($request->boolean('exemplos')) {
+                Artisan::call('db:seed', ['--force' => true]);
+                $resultado .= "\n".Artisan::output();
+            }
 
             // Mostra a lista de migrations e se cada uma já foi rodada.
             Artisan::call('migrate:status');

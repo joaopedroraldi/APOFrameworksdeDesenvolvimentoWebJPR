@@ -76,6 +76,7 @@ class AutenticacaoController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('sucesso', 'Você saiu do sistema.');
+        // Volta para a tela de login, sem mostrar mensagem.
+        return redirect()->route('login');
     }
 }

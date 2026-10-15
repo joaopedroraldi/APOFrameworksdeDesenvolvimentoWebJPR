@@ -55,11 +55,9 @@ class AutenticacaoController extends Controller
             'password' => ['required', 'string', 'min:8'],
             // Pergunta de segurança: sem o RA certo, não dá para criar a conta.
             'ra' => ['required', function ($campo, $valor, $falhar) {
-                // Compara só os números (ignora pontos, traços e espaços).
-                $digitado = preg_replace('/\D/', '', (string) $valor);
-                $certo = preg_replace('/\D/', '', (string) config('app.ra_cadastro'));
-
-                if ($digitado === '' || ltrim($digitado, '0') !== ltrim($certo, '0')) {
+                // A resposta precisa ser EXATAMENTE o RA (só tira os espaços do começo e do fim).
+                // Qualquer letra ou número a mais, ou a menos, é recusado.
+                if (trim((string) $valor) !== (string) config('app.ra_cadastro')) {
                     $falhar('RA incorreto. Sem ele não é possível criar a conta.');
                 }
             }],

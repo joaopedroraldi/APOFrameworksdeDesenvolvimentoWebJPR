@@ -32,6 +32,9 @@
                     <li class="{{ request()->is('clientes*') ? 'active' : '' }}">
                         <a href="{{ url('/clientes') }}"><i class="fa fa-users"></i> Clientes</a>
                     </li>
+                    <li class="{{ request()->is('usuarios*') ? 'active' : '' }}">
+                        <a href="{{ route('usuarios.index') }}"><i class="fa fa-user-circle"></i> Usuários</a>
+                    </li>
                 </ul>
 
                 {{-- Lado direito: nome do usuário com o botão de sair. --}}

@@ -15,10 +15,14 @@ class ClienteFactory extends Factory
     // Como cada campo de um cliente falso deve ser preenchido.
     public function definition(): array
     {
+        // Sorteia o nome primeiro, porque o e-mail é feito a partir dele.
+        $nome = $this->faker->firstName().' '.$this->faker->lastName().' '.$this->faker->lastName();
+
         return [
-            'nome' => $this->faker->firstName().' '.$this->faker->lastName().' '.$this->faker->lastName(),
+            'nome' => $nome,
             'cpf' => $this->faker->unique()->cpf(),
-            'email' => $this->faker->unique()->safeEmail(),
+            // E-mail feito a partir do nome, com um destes domínios: gmail.com, hotmail.com ou terra.com.br.
+            'email' => Cliente::gerarEmail($nome, $this->faker->randomElement(['gmail.com', 'hotmail.com', 'terra.com.br'])),
             'telefone' => $this->faker->cellphoneNumber(),
             'data_nascimento' => $this->faker->dateTimeBetween('-80 years', '-18 years')->format('Y-m-d'),
             'cep' => $this->faker->postcode(),

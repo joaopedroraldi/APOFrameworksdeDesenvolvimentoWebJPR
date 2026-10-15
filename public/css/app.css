@@ -92,3 +92,20 @@ body {
 .paginacao .pagination {
     margin: 10px 0;
 }
+
+/* Preço e estoque grandes na tela de ver livro. */
+.preco-destaque {
+    font-size: 32px;
+    font-weight: bold;
+    color: #3c763d;
+    margin: 0 0 10px;
+}
+.estoque-destaque {
+    font-size: 20px;
+    margin: 0;
+}
+
+/* Espaço entre os controles do DataTables e a tabela. */
+.dataTables_wrapper .row {
+    margin-bottom: 10px;
+}

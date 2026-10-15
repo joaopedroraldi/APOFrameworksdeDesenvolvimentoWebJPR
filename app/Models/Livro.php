@@ -55,6 +55,12 @@ class Livro extends Model
     // Lista de idiomas que aparecem no formulário.
     public const IDIOMAS = ['Português', 'Inglês', 'Espanhol', 'Francês', 'Outro'];
 
+    // Devolve o preço no formato brasileiro (ex: R$ 1.234,56).
+    public function precoFormatado(): string
+    {
+        return 'R$ '.number_format((float) $this->preco, 2, ',', '.');
+    }
+
     // Diz para o Laravel o tipo de cada campo.
     protected function casts(): array
     {

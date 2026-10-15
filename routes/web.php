@@ -3,6 +3,7 @@
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\InstalacaoController;
+use App\Http\Controllers\LivroController;
 use Illuminate\Support\Facades\Route;
 
 // Rotas para quem NÃO está logado (o "guest" manda quem já está logado para o início).
@@ -27,6 +28,9 @@ Route::middleware('auth')->group(function () {
     // CRUD de clientes. Esta linha cria as 7 rotas de uma vez:
     // listar, criar (tela e salvar), ver, editar (tela e salvar) e excluir.
     Route::resource('clientes', ClienteController::class);
+
+    // CRUD de livros. Mesma ideia: as 7 rotas em uma linha.
+    Route::resource('livros', LivroController::class);
 
     // Sair do sistema. É POST para ninguém deslogar a pessoa só com um link.
     Route::post('/sair', [AutenticacaoController::class, 'sair'])->name('sair');

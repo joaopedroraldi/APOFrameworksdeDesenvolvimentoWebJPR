@@ -12,7 +12,7 @@
         </a>
     </div>
 
-    <div class="caixa">
+    <div class="caixa" style="height: 597.75px; overflow: hidden;">
         {{-- A tabela tem o id "tabela-livros". É por ele que o DataTables encontra a tabela. --}}
         <table id="tabela-livros" class="table table-striped table-hover" style="width: 100%;">
             <thead>

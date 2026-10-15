@@ -11,6 +11,11 @@
     {{-- Título da aba. Cada página pode mudar a primeira parte. --}}
     <title>@yield('titulo', 'Início') | {{ config('app.name') }}</title>
 
+    {{-- Ícone que aparece na aba do navegador (favicon) e na tela inicial do celular. --}}
+    <link rel="icon" href="{{ asset('favicon.ico') }}?v={{ time() }}" sizes="any">
+    <link rel="icon" type="image/png" href="{{ asset('favicon-32.png') }}?v={{ time() }}" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}?v={{ time() }}">
+
     {{-- Bootstrap 3.4.1: deixa a tela bonita sem precisar criar CSS do zero. --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
 

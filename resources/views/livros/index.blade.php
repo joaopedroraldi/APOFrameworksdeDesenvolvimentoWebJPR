@@ -4,7 +4,7 @@
 @section('titulo', 'Livros')
 
 @section('conteudo')
-    <div class="caixa">
+    <div class="caixa caixa-lista">
         {{-- A classe "tabela-datatable" faz o DataTables ligar sozinho (veja o public/js/app.js). --}}
         {{-- O data-titulo e o data-icone viram o título que aparece no meio, em cima da tabela. --}}
         <table class="table table-striped table-hover tabela-datatable" style="width: 100%;" data-titulo="Livros" data-icone="fa-book">

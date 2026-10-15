@@ -16,7 +16,8 @@
 @endif
 
 {{-- Erros de formulário (campo obrigatório vazio, por exemplo). --}}
-@if ($errors->any())
+{{-- Na tela de cadastro não aparece, porque lá o erro já é mostrado embaixo de cada campo. --}}
+@if ($errors->any() && ! request()->routeIs('cadastro'))
     <script>
         Swal.fire({ icon: 'warning', title: 'Confira o formulário', text: 'Alguns campos precisam ser corrigidos.' });
     </script>

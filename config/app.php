@@ -135,4 +135,16 @@ return [
 
     'install_token' => env('INSTALL_TOKEN'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | RA da pergunta do cadastro
+    |--------------------------------------------------------------------------
+    |
+    | Para criar uma conta, a pessoa precisa responder "Qual é o RA do João
+    | Pedro Raldi?". A resposta certa é este número.
+    |
+    */
+
+    'ra_cadastro' => env('CADASTRO_RA', ''),
+
 ];

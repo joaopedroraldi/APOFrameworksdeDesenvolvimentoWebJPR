@@ -16,9 +16,9 @@
     <p class="text-muted"><i class="fa fa-info-circle"></i> Deixe em branco para manter a senha atual.</p>
 @endif
 
+{{-- Campo de senha. O valor nunca vem preenchido, por segurança. --}}
 <div class="row">
     <div class="col-sm-6">
-        {{-- Campo de senha. O valor nunca vem preenchido, por segurança. --}}
         <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
             <label for="password">Senha {{ $usuario->exists ? '' : '*' }}</label>
             <input type="password" id="password" name="password" class="form-control" autocomplete="new-password">
@@ -26,13 +26,6 @@
             @error('password')
                 <span class="help-block">{{ $message }}</span>
             @enderror
-        </div>
-    </div>
-    <div class="col-sm-6">
-        {{-- O nome precisa ser "password_confirmation" para o Laravel conferir. --}}
-        <div class="form-group">
-            <label for="password_confirmation">Repita a senha {{ $usuario->exists ? '' : '*' }}</label>
-            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" autocomplete="new-password">
         </div>
     </div>
 </div>

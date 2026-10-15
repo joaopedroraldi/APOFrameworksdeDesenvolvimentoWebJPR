@@ -25,7 +25,7 @@ class UsuarioRequest extends FormRequest
             // O e-mail não pode repetir, mas na edição ignora o próprio usuário.
             'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')->ignore($usuario)],
             // Na criação a senha é obrigatória. Na edição pode deixar vazia para não trocar.
-            'password' => [$usuario ? 'nullable' : 'required', 'string', 'min:8', 'confirmed'],
+            'password' => [$usuario ? 'nullable' : 'required', 'string', 'min:8'],
         ];
     }
 

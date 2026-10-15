@@ -48,12 +48,27 @@ class AutenticacaoController extends Controller
     // Recebe os dados do formulário e cria o usuário.
     public function cadastrar(Request $request)
     {
-        // Confere os campos. O "confirmed" exige que a senha seja digitada duas vezes igual.
+        // Confere os campos.
         $dados = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8'],
+            // Pergunta de segurança: sem o RA certo, não dá para criar a conta.
+            'ra' => ['required', function ($campo, $valor, $falhar) {
+                // Compara só os números (ignora pontos, traços e espaços).
+                $digitado = preg_replace('/\D/', '', (string) $valor);
+                $certo = preg_replace('/\D/', '', (string) config('app.ra_cadastro'));
+
+                if ($digitado === '' || ltrim($digitado, '0') !== ltrim($certo, '0')) {
+                    $falhar('RA incorreto. Sem ele não é possível criar a conta.');
+                }
+            }],
+        ], [
+            'ra.required' => 'Responda qual é o RA do João Pedro Raldi.',
         ]);
+
+        // O RA só serve para conferir, não é salvo no usuário.
+        unset($dados['ra']);
 
         // Salva o usuário no banco. A senha é criptografada sozinha pelo model User.
         $usuario = User::create($dados);

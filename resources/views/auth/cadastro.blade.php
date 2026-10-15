@@ -42,10 +42,13 @@
                         @enderror
                     </div>
 
-                    {{-- Repetir a senha. O nome precisa ser "password_confirmation" para o Laravel conferir. --}}
-                    <div class="form-group">
-                        <label for="password_confirmation">Repita a senha</label>
-                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" minlength="8" required>
+                    {{-- Pergunta de segurança. Sem o RA certo, a conta não é criada. --}}
+                    <div class="form-group {{ $errors->has('ra') ? 'has-error' : '' }}">
+                        <label for="ra">Qual é o RA do João Pedro Raldi?</label>
+                        <input type="text" id="ra" name="ra" class="form-control" inputmode="numeric" autocomplete="off" required>
+                        @error('ra')
+                            <span class="help-block">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <button type="submit" class="btn btn-success btn-block">

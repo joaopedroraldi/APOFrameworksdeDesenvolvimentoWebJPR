@@ -49,7 +49,7 @@
     </div>
 
     {{-- Atalhos para cadastrar rápido. --}}
-    <div class="caixa">
+    <div class="caixa" style="height: unset!important;">
         <h4 class="titulo-secao"><i class="fa fa-bolt"></i> Atalhos</h4>
         <a href="{{ route('clientes.create') }}" class="btn btn-primary"><i class="fa fa-user-plus"></i> Novo cliente</a>
         <a href="{{ route('livros.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Novo livro</a>

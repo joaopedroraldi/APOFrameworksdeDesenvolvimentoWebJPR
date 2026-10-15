@@ -4,24 +4,6 @@
 @section('titulo', $livro->titulo)
 
 @section('conteudo')
-    <div class="cabecalho-pagina">
-        <h1>
-            <i class="fa fa-book"></i> {{ $livro->titulo }}
-            @if ($livro->subtitulo)
-                <small>{{ $livro->subtitulo }}</small>
-            @endif
-        </h1>
-        <div>
-            <a href="{{ route('livros.index') }}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
-            <a href="{{ route('livros.edit', $livro) }}" class="btn btn-warning"><i class="fa fa-pencil"></i> Editar</a>
-            <form method="POST" action="{{ route('livros.destroy', $livro) }}" class="form-excluir" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Excluir</button>
-            </form>
-        </div>
-    </div>
-
     <div class="row">
         {{-- Coluna da esquerda: os dados do livro. --}}
         <div class="col-md-8">

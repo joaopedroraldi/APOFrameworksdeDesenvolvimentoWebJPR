@@ -4,19 +4,6 @@
 @section('titulo', $cliente->nome)
 
 @section('conteudo')
-    <div class="cabecalho-pagina">
-        <h1><i class="fa fa-user"></i> {{ $cliente->nome }}</h1>
-        <div>
-            <a href="{{ route('clientes.index') }}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
-            <a href="{{ route('clientes.edit', $cliente) }}" class="btn btn-warning"><i class="fa fa-pencil"></i> Editar</a>
-            <form method="POST" action="{{ route('clientes.destroy', $cliente) }}" class="form-excluir" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Excluir</button>
-            </form>
-        </div>
-    </div>
-
     <div class="caixa">
         {{-- "dl-horizontal" é uma lista do Bootstrap com o nome do campo do lado do valor. --}}
         {{-- O ?: '-' mostra um traço quando o campo está vazio. --}}

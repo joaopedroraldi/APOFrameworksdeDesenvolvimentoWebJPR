@@ -35,18 +35,6 @@ body {
     padding: 20px;
 }
 
-/* Título da página com o botão do lado direito. */
-.cabecalho-pagina {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-.cabecalho-pagina h1 {
-    margin: 0;
-    font-size: 26px;
-}
 
 /* Botões da coluna "Ações" das tabelas, sem quebrar linha. */
 .acoes {

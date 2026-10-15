@@ -4,14 +4,6 @@
 @section('titulo', 'Clientes')
 
 @section('conteudo')
-    {{-- Título com o botão de novo cliente. --}}
-    <div class="cabecalho-pagina">
-        <h1><i class="fa fa-users"></i> Clientes</h1>
-        <a href="{{ route('clientes.create') }}" class="btn btn-success">
-            <i class="fa fa-plus"></i> Novo cliente
-        </a>
-    </div>
-
     <div class="caixa">
         {{-- Campo de busca. Ele manda o texto pela URL (?busca=...). --}}
         <form method="GET" action="{{ route('clientes.index') }}" class="form-busca">

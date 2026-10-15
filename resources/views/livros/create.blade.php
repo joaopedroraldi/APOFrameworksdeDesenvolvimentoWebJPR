@@ -4,13 +4,6 @@
 @section('titulo', 'Novo livro')
 
 @section('conteudo')
-    <div class="cabecalho-pagina">
-        <h1><i class="fa fa-plus"></i> Novo livro</h1>
-        <a href="{{ route('livros.index') }}" class="btn btn-default">
-            <i class="fa fa-arrow-left"></i> Voltar
-        </a>
-    </div>
-
     <div class="caixa">
         <form method="POST" action="{{ route('livros.store') }}" novalidate>
             @csrf

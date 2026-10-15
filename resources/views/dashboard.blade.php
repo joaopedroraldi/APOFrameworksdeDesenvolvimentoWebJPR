@@ -4,12 +4,6 @@
 @section('titulo', 'Dashboard')
 
 @section('conteudo')
-    <div class="cabecalho-pagina">
-        <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
-        {{-- auth()->user() é o usuário que está logado agora. --}}
-        <span class="text-muted">Olá, {{ auth()->user()->name }}!</span>
-    </div>
-
     <div class="row">
         {{-- Card com a quantidade de clientes. --}}
         <div class="col-sm-4">

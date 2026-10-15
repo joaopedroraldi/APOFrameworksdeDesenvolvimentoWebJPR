@@ -4,13 +4,6 @@
 @section('titulo', 'Novo usuário')
 
 @section('conteudo')
-    <div class="cabecalho-pagina">
-        <h1><i class="fa fa-user-plus"></i> Novo usuário</h1>
-        <a href="{{ route('usuarios.index') }}" class="btn btn-default">
-            <i class="fa fa-arrow-left"></i> Voltar
-        </a>
-    </div>
-
     <div class="caixa">
         <form method="POST" action="{{ route('usuarios.store') }}" novalidate>
             @csrf

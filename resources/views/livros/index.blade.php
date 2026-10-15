@@ -4,14 +4,6 @@
 @section('titulo', 'Livros')
 
 @section('conteudo')
-    {{-- Título com o botão de novo livro. --}}
-    <div class="cabecalho-pagina">
-        <h1><i class="fa fa-book"></i> Livros</h1>
-        <a href="{{ route('livros.create') }}" class="btn btn-success">
-            <i class="fa fa-plus"></i> Novo livro
-        </a>
-    </div>
-
     <div class="caixa" style="height: 597.75px; overflow: hidden;">
         {{-- A tabela tem o id "tabela-livros". É por ele que o DataTables encontra a tabela. --}}
         <table id="tabela-livros" class="table table-striped table-hover" style="width: 100%;">

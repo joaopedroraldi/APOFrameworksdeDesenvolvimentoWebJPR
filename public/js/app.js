@@ -35,7 +35,32 @@ $(function () {
             columnDefs: [
                 { orderable: false, searchable: false, targets: -1 } // A coluna "Ações" (a última) não ordena nem busca.
             ],
-            autoWidth: false                         // Deixa o Bootstrap cuidar da largura das colunas.
+            autoWidth: false,                        // Deixa o Bootstrap cuidar da largura das colunas.
+
+            // Arrumação dos pedaços do DataTables na tela (cada letra é um pedaço):
+            // l = "Mostrar X por página", f = busca, t = tabela, i = "Mostrando X até Y", p = páginas.
+            // Na linha de cima ficam: "Mostrar X" (esquerda), o título (meio) e a busca (direita).
+            dom: "<'row'<'col-sm-4'l><'col-sm-4 titulo-datatable'><'col-sm-4'f>>" +
+                 "<'row'<'col-sm-12'tr>>" +
+                 "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+
+            // Roda quando o DataTables termina de carregar.
+            initComplete: function () {
+                var tabela = $(this);
+
+                // Pega o título e o ícone escritos na tabela (data-titulo e data-icone).
+                var titulo = tabela.data('titulo') || '';
+                var icone = tabela.data('icone') || '';
+
+                // Monta o título e coloca no espaço do meio.
+                var h1 = $('<h1>');
+                if (icone) {
+                    h1.append($('<i>').addClass('fa ' + icone)).append(' ');
+                }
+                h1.append(document.createTextNode(titulo));
+
+                $(this.api().table().container()).find('.titulo-datatable').append(h1);
+            }
         });
     }
 

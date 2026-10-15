@@ -6,7 +6,8 @@
 @section('conteudo')
     <div class="caixa">
         {{-- A classe "tabela-datatable" faz o DataTables ligar sozinho (veja o public/js/app.js). --}}
-        <table class="table table-striped table-hover tabela-datatable" style="width: 100%;">
+        {{-- O data-titulo e o data-icone viram o título que aparece no meio, em cima da tabela. --}}
+        <table class="table table-striped table-hover tabela-datatable" style="width: 100%;" data-titulo="Clientes" data-icone="fa-users">
             <thead>
                 <tr>
                     <th>Nome</th>

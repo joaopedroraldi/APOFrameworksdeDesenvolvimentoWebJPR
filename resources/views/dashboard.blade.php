@@ -12,7 +12,7 @@
 
     <div class="row">
         {{-- Card com a quantidade de clientes. --}}
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card-indicador card-clientes">
                 <div class="card-indicador-icone"><i class="fa fa-users"></i></div>
                 <div class="card-indicador-texto">
@@ -26,7 +26,7 @@
         </div>
 
         {{-- Card com a quantidade de livros. --}}
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="card-indicador card-livros">
                 <div class="card-indicador-icone"><i class="fa fa-book"></i></div>
                 <div class="card-indicador-texto">
@@ -35,6 +35,20 @@
                 </div>
                 <a href="{{ route('livros.index') }}" class="card-indicador-link">
                     Ver livros <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+
+        {{-- Card com a quantidade de usuários (quem pode entrar no sistema). --}}
+        <div class="col-sm-4">
+            <div class="card-indicador card-usuarios">
+                <div class="card-indicador-icone"><i class="fa fa-user-circle"></i></div>
+                <div class="card-indicador-texto">
+                    <span class="card-indicador-numero">{{ $totalUsuarios }}</span>
+                    <span class="card-indicador-titulo">{{ $totalUsuarios === 1 ? 'Usuário cadastrado' : 'Usuários cadastrados' }}</span>
+                </div>
+                <a href="{{ route('usuarios.index') }}" class="card-indicador-link">
+                    Ver usuários <i class="fa fa-arrow-circle-right"></i>
                 </a>
             </div>
         </div>

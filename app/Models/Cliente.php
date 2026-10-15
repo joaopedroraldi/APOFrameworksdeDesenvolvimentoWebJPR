@@ -80,6 +80,35 @@ class Cliente extends Model
         return $usuario.'@'.$dominio;
     }
 
+    // Lista de dados que aparece no popup de "ver" (rótulo e valor).
+    // Campo vazio aparece como "-".
+    public function detalhes(): array
+    {
+        $endereco = $this->endereco ? $this->endereco.', '.($this->numero ?: 's/n') : null;
+        $nascimento = $this->data_nascimento
+            ? $this->data_nascimento->format('d/m/Y').' ('.$this->data_nascimento->age.' anos)'
+            : null;
+
+        $dados = [
+            ['Nome', $this->nome],
+            ['CPF', $this->cpf],
+            ['E-mail', $this->email],
+            ['Telefone', $this->telefone],
+            ['Nascimento', $nascimento],
+            ['CEP', $this->cep],
+            ['Endereço', $endereco],
+            ['Complemento', $this->complemento],
+            ['Bairro', $this->bairro],
+            ['Cidade/UF', $this->cidade ? $this->cidade.'/'.$this->uf : null],
+            ['Observações', $this->observacoes],
+            ['Cadastrado em', $this->created_at?->format('d/m/Y H:i')],
+            ['Alterado em', $this->updated_at?->format('d/m/Y H:i')],
+        ];
+
+        // Troca os valores vazios por "-".
+        return array_map(fn ($linha) => [$linha[0], filled($linha[1]) ? (string) $linha[1] : '-'], $dados);
+    }
+
     // Diz para o Laravel o tipo de cada campo.
     protected function casts(): array
     {

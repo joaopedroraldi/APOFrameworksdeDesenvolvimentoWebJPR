@@ -29,7 +29,7 @@
                         <td>{{ $cliente->cidade ? $cliente->cidade.'/'.$cliente->uf : '-' }}</td>
                         <td class="text-right acoes">
                             {{-- Botões de ver, editar e excluir. --}}
-                            @include('partials.botoes-acoes', ['rota' => 'clientes', 'registro' => $cliente])
+                            @include('partials.botoes-acoes', ['rota' => 'clientes', 'registro' => $cliente, 'titulo' => $cliente->nome])
                         </td>
                     </tr>
                 @endforeach

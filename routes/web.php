@@ -25,12 +25,13 @@ Route::middleware('auth')->group(function () {
     // Página inicial: o dashboard com os indicadores.
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    // CRUD de clientes. Esta linha cria as 7 rotas de uma vez:
-    // listar, criar (tela e salvar), ver, editar (tela e salvar) e excluir.
-    Route::resource('clientes', ClienteController::class);
+    // CRUD de clientes. Esta linha cria as rotas de uma vez:
+    // listar, criar (tela e salvar), editar (tela e salvar) e excluir.
+    // O except('show') tira a tela de "ver", porque os dados aparecem num popup na própria lista.
+    Route::resource('clientes', ClienteController::class)->except('show');
 
-    // CRUD de livros. Mesma ideia: as 7 rotas em uma linha.
-    Route::resource('livros', LivroController::class);
+    // CRUD de livros. Mesma ideia, também sem a tela de "ver".
+    Route::resource('livros', LivroController::class)->except('show');
 
     // Área de usuários. O except('show') tira a tela de "ver", que aqui não é necessária.
     Route::resource('usuarios', UsuarioController::class)->except('show');

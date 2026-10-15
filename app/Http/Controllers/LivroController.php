@@ -41,13 +41,6 @@ class LivroController extends Controller
             ->with('sucesso', 'Livro cadastrado com sucesso!');
     }
 
-    // VER: mostra todos os dados de um livro.
-    // O Laravel já busca o livro pelo id da URL sozinho (Route Model Binding).
-    public function show(Livro $livro)
-    {
-        return view('livros.show', compact('livro'));
-    }
-
     // EDITAR (tela): mostra o formulário já preenchido.
     public function edit(Livro $livro)
     {

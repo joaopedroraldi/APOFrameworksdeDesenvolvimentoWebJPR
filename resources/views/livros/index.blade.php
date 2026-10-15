@@ -51,7 +51,7 @@
                             @endif
                         </td>
                         <td class="text-right acoes">
-                            @include('partials.botoes-acoes', ['rota' => 'livros', 'registro' => $livro])
+                            @include('partials.botoes-acoes', ['rota' => 'livros', 'registro' => $livro, 'titulo' => $livro->titulo])
                         </td>
                     </tr>
                 @endforeach

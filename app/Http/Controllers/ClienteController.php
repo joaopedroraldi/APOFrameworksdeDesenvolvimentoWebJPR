@@ -34,13 +34,6 @@ class ClienteController extends Controller
             ->with('sucesso', 'Cliente cadastrado com sucesso!');
     }
 
-    // VER: mostra todos os dados de um cliente.
-    // O Laravel já busca o cliente pelo id da URL sozinho (isso se chama Route Model Binding).
-    public function show(Cliente $cliente)
-    {
-        return view('clientes.show', compact('cliente'));
-    }
-
     // EDITAR (tela): mostra o formulário já preenchido.
     public function edit(Cliente $cliente)
     {

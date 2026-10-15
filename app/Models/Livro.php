@@ -61,6 +61,34 @@ class Livro extends Model
         return 'R$ '.number_format((float) $this->preco, 2, ',', '.');
     }
 
+    // Lista de dados que aparece no popup de "ver" (rótulo e valor).
+    // Campo vazio aparece como "-".
+    public function detalhes(): array
+    {
+        $dados = [
+            ['Título', $this->titulo],
+            ['Subtítulo', $this->subtitulo],
+            ['Autor', $this->autor],
+            ['Editora', $this->editora],
+            ['ISBN', $this->isbn],
+            ['Gênero', $this->genero],
+            ['Idioma', $this->idioma],
+            ['Ano', $this->ano_publicacao],
+            ['Edição', $this->edicao ? $this->edicao.'ª edição' : null],
+            ['Páginas', $this->numero_paginas],
+            ['Formato', $this->formato],
+            ['Preço', $this->precoFormatado()],
+            ['Estoque', $this->quantidade_estoque === 0 ? 'Esgotado' : $this->quantidade_estoque],
+            ['Situação', $this->ativo ? 'Ativo' : 'Inativo'],
+            ['Sinopse', $this->sinopse],
+            ['Cadastrado em', $this->created_at?->format('d/m/Y H:i')],
+            ['Alterado em', $this->updated_at?->format('d/m/Y H:i')],
+        ];
+
+        // Troca os valores vazios por "-".
+        return array_map(fn ($linha) => [$linha[0], filled($linha[1]) ? (string) $linha[1] : '-'], $dados);
+    }
+
     // Diz para o Laravel o tipo de cada campo.
     protected function casts(): array
     {

@@ -1,9 +1,13 @@
 {{-- Botões de ver, editar e excluir, usados nas listas. --}}
-{{-- Recebe: $rota (ex: "clientes") e $registro (o cliente ou livro da linha). --}}
+{{-- Recebe: $rota (ex: "clientes"), $registro (o cliente ou livro da linha) e $titulo (título do popup). --}}
 
-<a href="{{ route($rota.'.show', $registro) }}" class="btn btn-info btn-xs" title="Ver">
+{{-- Botão "ver": abre um popup com os dados, sem sair da página. --}}
+{{-- Os dados vão escritos no próprio botão (data-detalhes), e o public/js/app.js monta o popup. --}}
+<button type="button" class="btn btn-info btn-xs btn-ver" title="Ver"
+        data-titulo="{{ $titulo }}"
+        data-detalhes="{{ json_encode($registro->detalhes()) }}">
     <i class="fa fa-eye"></i>
-</a>
+</button>
 
 <a href="{{ route($rota.'.edit', $registro) }}" class="btn btn-warning btn-xs" title="Editar">
     <i class="fa fa-pencil"></i>

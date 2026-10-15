@@ -64,6 +64,24 @@ $(function () {
         });
     }
 
+    // Botão "ver": monta o popup com os dados escritos no botão e abre.
+    // Usa $(document).on porque o DataTables cria as linhas de novo ao trocar de página.
+    $(document).on('click', '.btn-ver', function () {
+        var botao = $(this);
+        var lista = $('#popup-detalhes .popup-detalhes-lista').empty();
+
+        // Título do popup (ex: nome do cliente).
+        $('#popup-detalhes-titulo').text(botao.data('titulo'));
+
+        // Cada item é [rótulo, valor]. O .text() protege contra código malicioso.
+        $.each(botao.data('detalhes'), function (i, item) {
+            lista.append($('<dt>').text(item[0]));
+            lista.append($('<dd>').text(item[1]));
+        });
+
+        $('#popup-detalhes').modal('show');
+    });
+
     // Máscaras: vão colocando os pontos e traços enquanto a pessoa digita.
     if ($.fn.mask) {
         $('.mascara-cpf').mask('000.000.000-00');

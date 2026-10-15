@@ -45,6 +45,9 @@
     {{-- Rodapé. --}}
     @include('partials.rodape')
 
+    {{-- Popup que mostra os dados quando clica no botão "ver". --}}
+    @include('partials.popup-detalhes')
+
     {{-- jQuery: o Bootstrap 3 e o DataTables precisam dele. --}}
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 

@@ -21,7 +21,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs@1.13.8/css/dataTables.bootstrap.min.css">
 
     {{-- Nosso CSS, com os ajustes do sistema. --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {{-- O "?v=" leva a data em que o arquivo foi alterado. Quando ele muda, o navegador e o --}}
+    {{-- Cloudflare entendem que é um arquivo novo e baixam de novo (em vez de usar a cópia antiga). --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ filemtime(public_path('css/app.css')) }}">
 
     {{-- Espaço para uma página colocar um CSS só dela. --}}
     @stack('css')
@@ -56,7 +58,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
 
     {{-- Nosso JavaScript, com as funções do sistema. --}}
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}?v={{ filemtime(public_path('js/app.js')) }}"></script>
 
     {{-- Mostra os avisos de sucesso ou erro, se tiver algum. --}}
     @include('partials.alertas')

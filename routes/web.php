@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InstalacaoController;
 use App\Http\Controllers\LivroController;
 use Illuminate\Support\Facades\Route;
@@ -20,10 +21,8 @@ Route::middleware('guest')->group(function () {
 
 // Rotas que só funcionam para quem ESTÁ logado (o "auth" manda quem não está para o login).
 Route::middleware('auth')->group(function () {
-    // Página inicial.
-    Route::get('/', function () {
-        return view('inicio');
-    })->name('inicio');
+    // Página inicial: o dashboard com os indicadores.
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // CRUD de clientes. Esta linha cria as 7 rotas de uma vez:
     // listar, criar (tela e salvar), ver, editar (tela e salvar) e excluir.

@@ -109,3 +109,57 @@ body {
 .dataTables_wrapper .row {
     margin-bottom: 10px;
 }
+
+/* Cards de indicadores do dashboard. */
+.card-indicador {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: #fff;
+}
+.card-indicador-texto {
+    padding: 20px;
+}
+.card-indicador-numero {
+    display: block;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1;
+}
+.card-indicador-titulo {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+/* Ícone grande e meio transparente no canto do card. */
+.card-indicador-icone {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 70px;
+    opacity: 0.25;
+}
+
+/* Faixa de baixo do card, com o link. */
+.card-indicador-link {
+    display: block;
+    padding: 8px 20px;
+    background-color: rgba(0, 0, 0, 0.12);
+    color: #fff;
+}
+.card-indicador-link:hover,
+.card-indicador-link:focus {
+    background-color: rgba(0, 0, 0, 0.22);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Cor de cada card. */
+.card-clientes {
+    background-color: #337ab7;
+}
+.card-livros {
+    background-color: #449d44;
+}

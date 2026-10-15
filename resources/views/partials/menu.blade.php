@@ -24,7 +24,7 @@
                 {{-- Links do sistema. O "active" deixa marcado o link da página atual. --}}
                 <ul class="nav navbar-nav">
                     <li class="{{ request()->is('/') ? 'active' : '' }}">
-                        <a href="{{ url('/') }}"><i class="fa fa-home"></i> Início</a>
+                        <a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li class="{{ request()->is('livros*') ? 'active' : '' }}">
                         <a href="{{ url('/livros') }}"><i class="fa fa-book"></i> Livros</a>

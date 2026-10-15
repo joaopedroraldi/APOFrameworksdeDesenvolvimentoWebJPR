@@ -8,11 +8,12 @@
         {{-- A classe "tabela-datatable" faz o DataTables ligar sozinho (veja o public/js/app.js). --}}
         {{-- O data-titulo e o data-icone viram o título que aparece no meio, em cima da tabela. --}}
         <table class="table table-striped table-hover tabela-datatable" style="width: 100%;" data-titulo="Usuários" data-icone="fa-user-circle">
+            {{-- O "hidden-xs" esconde a coluna no celular. --}}
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>E-mail</th>
-                    <th>Cadastrado em</th>
+                    <th class="hidden-xs">Cadastrado em</th>
                     <th class="text-right">Ações</th>
                 </tr>
             </thead>
@@ -29,7 +30,7 @@
                         </td>
                         <td>{{ $usuario->email }}</td>
                         {{-- O data-order guarda a data no formato ano-mês-dia, para o DataTables ordenar certo. --}}
-                        <td data-order="{{ $usuario->created_at->format('Y-m-d H:i:s') }}">{{ $usuario->created_at->format('d/m/Y') }}</td>
+                        <td class="hidden-xs" data-order="{{ $usuario->created_at->format('Y-m-d H:i:s') }}">{{ $usuario->created_at->format('d/m/Y') }}</td>
                         <td class="text-right acoes">
                             <a href="{{ route('usuarios.edit', $usuario) }}" class="btn btn-warning btn-xs" title="Editar">
                                 <i class="fa fa-pencil"></i>

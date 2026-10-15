@@ -39,9 +39,10 @@ $(function () {
 
             // Arrumação dos pedaços do DataTables na tela (cada letra é um pedaço):
             // l = "Mostrar X por página", f = busca, t = tabela, i = "Mostrando X até Y", p = páginas.
+            // A tabela fica dentro da "tabela-rolagem", que rola para os lados quando não cabe na tela.
             // Na linha de cima ficam: "Mostrar X" (esquerda), o título (meio) e a busca (direita).
             dom: "<'row'<'col-sm-4'l><'col-sm-4 titulo-datatable'><'col-sm-4'f>>" +
-                 "<'row'<'col-sm-12'tr>>" +
+                 "<'row'<'col-sm-12 tabela-rolagem'tr>>" +
                  "<'row'<'col-sm-5'i><'col-sm-7'p>>",
 
             // Roda quando o DataTables termina de carregar.

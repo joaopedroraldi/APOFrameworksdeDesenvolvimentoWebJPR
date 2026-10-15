@@ -12,11 +12,16 @@ body {
 .conteudo {
     flex: 1 0 auto;
     padding-bottom: 30px;
+    /* Não deixa o conteúdo ficar mais largo que a tela (senão a tabela larga empurra a página). */
+    width: 100%;
+    min-width: 0;
 }
 
 /* Tira o espaço que o menu deixa embaixo dele. */
 .navbar {
     margin-bottom: 25px;
+    /* Não deixa o menu "encolher": assim, no celular, ele cresce ao abrir e empurra o conteúdo. */
+    flex-shrink: 0;
 }
 
 /* Visual do rodapé. */
@@ -37,10 +42,39 @@ body {
 
 /* Caixa das listas (livros, clientes e usuários). */
 /* Altura fixa: evita que a caixa "pule" de tamanho quando o DataTables carrega. */
-.caixa-lista {
-    height: 597.75px;
-    /* Esconde o que passar da altura. */
-    overflow: hidden;
+/* Só vale em telas de 1200px ou mais. Nas menores as linhas ocupam mais altura */
+/* e a altura fixa esconderia a paginação, então lá a caixa cresce com o conteúdo. */
+@media (min-width: 1200px) {
+    .caixa-lista {
+        height: 597.75px;
+        /* Esconde o que passar da altura. */
+        overflow: hidden;
+    }
+}
+
+/* Área da tabela: se ela for mais larga que a tela (celular e tablet), */
+/* rola para os lados só ela, sem a página inteira rolar. */
+.tabela-rolagem {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Campo "Buscar" do DataTables: encolhe para caber na coluna em telas médias. */
+div.dataTables_wrapper div.dataTables_filter label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+div.dataTables_wrapper div.dataTables_filter input {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 220px;
+}
+/* No celular os controles ficam centralizados. */
+@media (max-width: 767px) {
+    div.dataTables_wrapper div.dataTables_filter label {
+        justify-content: center;
+    }
 }
 
 
@@ -166,4 +200,26 @@ body {
 }
 .popup-detalhes-lista dd {
     white-space: pre-line;
+}
+
+/* Célula que não quebra em duas linhas (preço, CPF). No celular pode quebrar, para caber. */
+@media (min-width: 768px) {
+    .sem-quebra {
+        white-space: nowrap;
+    }
+}
+
+/* No celular: botões de página menores, para caber numa linha só. */
+@media (max-width: 767px) {
+    div.dataTables_wrapper .pagination > li > a,
+    div.dataTables_wrapper .pagination > li > span {
+        padding: 6px 9px;
+    }
+
+    /* Células da tabela com menos espaço nas laterais, para caber mais na tela. */
+    .tabela-datatable > thead > tr > th,
+    .tabela-datatable > tbody > tr > td {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 }

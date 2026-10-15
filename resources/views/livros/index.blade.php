@@ -5,8 +5,8 @@
 
 @section('conteudo')
     <div class="caixa" style="height: 597.75px; overflow: hidden;">
-        {{-- A tabela tem o id "tabela-livros". É por ele que o DataTables encontra a tabela. --}}
-        <table id="tabela-livros" class="table table-striped table-hover" style="width: 100%;">
+        {{-- A classe "tabela-datatable" faz o DataTables ligar sozinho (veja o public/js/app.js). --}}
+        <table class="table table-striped table-hover tabela-datatable" style="width: 100%;">
             <thead>
                 <tr>
                     <th>Título</th>
@@ -59,21 +59,3 @@
     </div>
 @endsection
 
-{{-- O @push coloca este JavaScript no fim da página (no @stack('scripts') do layout). --}}
-@push('scripts')
-    <script>
-        $(function () {
-            // Liga o DataTables na tabela de livros.
-            // Os textos em português já foram configurados no public/js/app.js.
-            $('#tabela-livros').DataTable({
-                pageLength: 10,                          // 10 livros por página.
-                lengthMenu: [5, 10, 25, 50, 100],        // Opções de "Mostrar X por página".
-                order: [[0, 'asc']],                     // Começa ordenando pelo título (coluna 0).
-                columnDefs: [
-                    { orderable: false, searchable: false, targets: -1 } // A coluna "Ações" (a última) não ordena nem busca.
-                ],
-                autoWidth: false                         // Deixa o Bootstrap cuidar da largura das colunas.
-            });
-        });
-    </script>
-@endpush

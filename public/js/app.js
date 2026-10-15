@@ -25,6 +25,20 @@ $(function () {
         });
     }
 
+    // Liga o DataTables em todas as tabelas que tiverem a classe "tabela-datatable".
+    // Assim as listas de livros, clientes e usuários funcionam do mesmo jeito.
+    if ($.fn.dataTable) {
+        $('.tabela-datatable').DataTable({
+            pageLength: 10,                          // 10 registros por página.
+            lengthMenu: [5, 10, 25, 50, 100],        // Opções de "Mostrar X por página".
+            order: [[0, 'asc']],                     // Começa ordenando pela primeira coluna.
+            columnDefs: [
+                { orderable: false, searchable: false, targets: -1 } // A coluna "Ações" (a última) não ordena nem busca.
+            ],
+            autoWidth: false                         // Deixa o Bootstrap cuidar da largura das colunas.
+        });
+    }
+
     // Máscaras: vão colocando os pontos e traços enquanto a pessoa digita.
     if ($.fn.mask) {
         $('.mascara-cpf').mask('000.000.000-00');

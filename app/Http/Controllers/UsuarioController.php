@@ -4,30 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UsuarioRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 // Controller da área de usuários (quem pode entrar no sistema).
 class UsuarioController extends Controller
 {
-    // LISTAR: mostra os usuários, com busca e paginação.
-    public function index(Request $request)
+    // LISTAR: manda todos os usuários para a tela.
+    // Quem cuida da busca, da ordem e das páginas é o DataTables, lá no navegador.
+    public function index()
     {
-        // Texto digitado no campo de busca (se tiver).
-        $busca = trim((string) $request->query('busca', ''));
+        $usuarios = User::orderBy('name')->get();
 
-        $usuarios = User::query()
-            // Se digitou algo, procura no nome ou no e-mail.
-            ->when($busca !== '', function ($consulta) use ($busca) {
-                $consulta->where(function ($q) use ($busca) {
-                    $q->where('name', 'like', "%{$busca}%")
-                        ->orWhere('email', 'like', "%{$busca}%");
-                });
-            })
-            ->orderBy('name')       // Ordem alfabética.
-            ->paginate(10)          // 10 usuários por página.
-            ->withQueryString();    // Mantém a busca ao trocar de página.
-
-        return view('usuarios.index', compact('usuarios', 'busca'));
+        return view('usuarios.index', compact('usuarios'));
     }
 
     // CRIAR (tela): mostra o formulário vazio.

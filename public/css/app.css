@@ -65,21 +65,7 @@ body {
     color: #555;
 }
 
-/* Espaço entre a busca e a tabela. */
-.form-busca {
-    margin-bottom: 20px;
-}
 
-/* Texto "Mostrando X a Y" de um lado e os botões de página do outro. */
-.paginacao {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.paginacao .pagination {
-    margin: 10px 0;
-}
 
 /* Preço e estoque grandes na tela de ver livro. */
 .preco-destaque {

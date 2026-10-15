@@ -4,32 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClienteRequest;
 use App\Models\Cliente;
-use Illuminate\Http\Request;
 
 // Controller do CRUD de clientes (criar, listar, editar e excluir).
 class ClienteController extends Controller
 {
-    // LISTAR: mostra a lista de clientes, com busca e paginação.
-    public function index(Request $request)
+    // LISTAR: manda todos os clientes para a tela.
+    // Quem cuida da busca, da ordem e das páginas é o DataTables, lá no navegador.
+    public function index()
     {
-        // Texto digitado no campo de busca (se tiver).
-        $busca = trim((string) $request->query('busca', ''));
+        $clientes = Cliente::orderBy('nome')->get();
 
-        $clientes = Cliente::query()
-            // Se digitou algo, procura no nome, CPF, e-mail ou cidade.
-            ->when($busca !== '', function ($consulta) use ($busca) {
-                $consulta->where(function ($q) use ($busca) {
-                    $q->where('nome', 'like', "%{$busca}%")
-                        ->orWhere('cpf', 'like', "%{$busca}%")
-                        ->orWhere('email', 'like', "%{$busca}%")
-                        ->orWhere('cidade', 'like', "%{$busca}%");
-                });
-            })
-            ->orderBy('nome')       // Ordem alfabética.
-            ->paginate(10)          // 10 clientes por página.
-            ->withQueryString();    // Mantém a busca ao trocar de página.
-
-        return view('clientes.index', compact('clientes', 'busca'));
+        return view('clientes.index', compact('clientes'));
     }
 
     // CRIAR (tela): mostra o formulário vazio.

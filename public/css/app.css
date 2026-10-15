@@ -33,6 +33,10 @@ body {
     border: 1px solid #e5e5e5;
     border-radius: 4px;
     padding: 20px;
+    /* Altura fixa: evita que a caixa "pule" de tamanho quando o DataTables carrega. */
+    height: 597.75px;
+    /* Esconde o que passar da altura. */
+    overflow: hidden;
 }
 
 

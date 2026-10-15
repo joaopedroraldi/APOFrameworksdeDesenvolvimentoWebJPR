@@ -4,7 +4,7 @@
 @section('titulo', 'Livros')
 
 @section('conteudo')
-    <div class="caixa" style="height: 597.75px; overflow: hidden;">
+    <div class="caixa">
         {{-- A classe "tabela-datatable" faz o DataTables ligar sozinho (veja o public/js/app.js). --}}
         <table class="table table-striped table-hover tabela-datatable" style="width: 100%;">
             <thead>

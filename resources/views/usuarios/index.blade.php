@@ -36,7 +36,7 @@
                                 <i class="fa fa-pencil"></i>
                             </a>
 
-                            {{-- O botão de excluir não aparece na linha do próprio usuário. --}}
+                            {{-- Na linha do próprio usuário, o botão de excluir aparece apagado e sem função. --}}
                             @if ($usuario->id !== auth()->id())
                                 <form method="POST" action="{{ route('usuarios.destroy', $usuario) }}" class="form-excluir">
                                     @csrf
@@ -45,6 +45,11 @@
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </form>
+                            @else
+                                {{-- O "disabled" do Bootstrap deixa o botão meio transparente e sem clique. --}}
+                                <button type="button" class="btn btn-danger btn-xs" title="Você não pode excluir a sua própria conta" disabled>
+                                    <i class="fa fa-trash"></i>
+                                </button>
                             @endif
                         </td>
                     </tr>

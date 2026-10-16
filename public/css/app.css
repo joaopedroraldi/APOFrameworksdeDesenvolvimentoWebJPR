@@ -13,8 +13,16 @@ body {
     flex: 1 0 auto;
     padding-bottom: 30px;
     /* Não deixa o conteúdo ficar mais largo que a tela (senão a tabela larga empurra a página). */
-    width: 100%;
+    /* É max-width (e não width) para não atrapalhar a largura máxima do .container (1170px). */
+    max-width: 100%;
     min-width: 0;
+}
+
+/* No celular o Bootstrap não define largura para o .container, então ocupa a tela toda. */
+@media (max-width: 767px) {
+    .conteudo {
+        width: 100%;
+    }
 }
 
 /* Tira o espaço que o menu deixa embaixo dele. */

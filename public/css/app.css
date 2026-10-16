@@ -48,18 +48,6 @@ body {
     padding: 20px;
 }
 
-/* Caixa das listas (livros, clientes e usuários). */
-/* Altura fixa: evita que a caixa "pule" de tamanho quando o DataTables carrega. */
-/* Só vale em telas de 1200px ou mais. Nas menores as linhas ocupam mais altura */
-/* e a altura fixa esconderia a paginação, então lá a caixa cresce com o conteúdo. */
-@media (min-width: 1200px) {
-    .caixa-lista {
-        height: 597.75px;
-        /* Esconde o que passar da altura. */
-        overflow: hidden;
-    }
-}
-
 /* Área da tabela: se ela for mais larga que a tela (celular e tablet), */
 /* rola para os lados só ela, sem a página inteira rolar. */
 .tabela-rolagem {

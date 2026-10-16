@@ -125,18 +125,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Senha da instalação
-    |--------------------------------------------------------------------------
-    |
-    | Senha usada na página /instalar, que roda as migrations pelo navegador.
-    | O valor fica no arquivo .env, na linha INSTALL_TOKEN.
-    |
-    */
-
-    'install_token' => env('INSTALL_TOKEN'),
-
-    /*
-    |--------------------------------------------------------------------------
     | RA da pergunta do cadastro
     |--------------------------------------------------------------------------
     |

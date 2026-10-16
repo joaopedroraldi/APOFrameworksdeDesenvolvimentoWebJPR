@@ -3,7 +3,6 @@
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\InstalacaoController;
 use App\Http\Controllers\LivroController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
@@ -39,9 +38,3 @@ Route::middleware('auth')->group(function () {
     // Sair do sistema. É POST para ninguém deslogar a pessoa só com um link.
     Route::post('/sair', [AutenticacaoController::class, 'sair'])->name('sair');
 });
-
-// Roda as migrations pelo navegador.
-// O throttle deixa acessar no máximo 10 vezes por minuto, para ninguém ficar chutando a senha.
-Route::get('/instalar', [InstalacaoController::class, 'migrar'])
-    ->middleware('throttle:10,1')
-    ->name('instalar');

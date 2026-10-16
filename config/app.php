@@ -129,10 +129,11 @@ return [
     |--------------------------------------------------------------------------
     |
     | Para criar uma conta, a pessoa precisa responder "Qual é o RA do João
-    | Pedro Raldi?". A resposta certa é este número.
+    | Pedro Raldi?". A resposta certa fica só no .env (linha CADASTRO_RA),
+    | para não aparecer no GitHub.
     |
     */
 
-    'ra_cadastro' => env('CADASTRO_RA', ''),
+    'ra_cadastro' => env('CADASTRO_RA'),
 
 ];
